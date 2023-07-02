@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
-import { bcrypt } from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UserService {
   constructor(
@@ -15,7 +15,7 @@ export class UserService {
     const hashedPassword = await bcrypt.hash(password, 12);
     await this.userRepository.save({
       nickname,
-      hashedPassword,
+      password: hashedPassword,
       email,
     });
   }
