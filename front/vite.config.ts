@@ -11,4 +11,12 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: [
+      { find: '@pages', replacement: '/src/pages' },
+      { find: '@hooks', replacement: '/src/hooks' },
+      { find: '@components', replacement: '/src/components' },
+      { find: '@', replacement: '/src' },
+    ],
+  },
 });
